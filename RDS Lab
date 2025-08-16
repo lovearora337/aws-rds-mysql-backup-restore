@@ -1,0 +1,32 @@
+Steps:
+
+Install mysql-server in vm ( on-premises )
+apt install mysql-server -y # For ubuntu/dabian
+
+Login mysql-server
+mysql -u root -p            # It will prompt you password put password as an root.
+
+Create database
+> create databse mydb;
+> use mydb;
+> create table user(name char(10), empID(10));
+> insert into user(name, empID) values(test, 123);  ## You can insert more data into user table so on.
+
+Take a MySQL dump:
+   mysqldump -u root -p users > mydb_backup.sql
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Upload to S3
+aws s3 cp mydb_backup.sql s3://my-bucket/mysql-backups/
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Restore into RDS:
+mysql -h <rds-endpoint> -u admin -p users < mydb_backup.sql
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+> use users;
+> select * from user;
+
+## You will see all your data here. Thanks for watching it!!!!!!!!!!!!!!!
+
+
