@@ -7,8 +7,8 @@ Login mysql-server
 mysql -u root -p            # It will prompt you password put password as an root.
 
 Create database
-> create databse mydb;
-> use mydb;
+> create databse users;
+> use users;
 > create table user(name char(10), empID(10));
 > insert into user(name, empID) values(test, 123);  ## You can insert more data into user table so on.
 
